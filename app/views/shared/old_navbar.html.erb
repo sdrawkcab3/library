@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <%= link_to "WCDL", root_path, class: "navbar-brand" %>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <%= link_to "Random Book", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Read Reviews", reviews_path, class: "nav-link" %>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <%= # render "shared/session_manager" %>
+        
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" id="user_menu" data-bs-toggle="dropdown" aria-expanded="false">
+                <%= current_user.name %>
+            </a>
+            
+            <ul class="dropdown-menu dropdown-menu-lg-end">
+                <%= link_to "Profile", edit_user_registration_path, class: "dropdown-item" %>
+                <li><a class="dropdown-item" href="#">History</a></li>
+                <li><a class="dropdown-item" href="#">Reviews</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Add book</a></li>
+                <li><a class="dropdown-item" href="#">View currently borrowed</a></li>
+                <li><a class="dropdown-item" href="#">Notify overdue borrowers</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </ul>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
