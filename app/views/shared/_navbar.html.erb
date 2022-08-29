@@ -8,16 +8,18 @@
 
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
 
-      <ul class="navbar-nav  me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <%= link_to "Random Book", root_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Read Reviews", reviews_path, class: "nav-link" %>
-        </li>
-        <%= render "shared/session_manager" %>
-      </ul>
-    </div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <%= link_to "Random Book", root_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Read Reviews", reviews_path, class: "nav-link" %>
+          </li>
+        </ul>
 
+        <%= render "shared/session_manager" %>
+        
+      
+    </div>
   </div>
 </nav>
