@@ -1,44 +1,49 @@
+<div class="container-md" >  
   <div class="row ms-1 me-1">
-    <div class="col-sm-8">
+    <div class="col-xs-6 col-lg-6 mb-3" >
       <div class="card">
         <div class="card-body">
-
           <h5 class="card-title">Edit <%= resource_name.to_s.humanize %></h5>
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-            
-          <%= f.label :email, class: "col-form-label" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
-          <%= f.label :name, class: "col-form-label" %>
-          <%= f.text_field :name, class: "form-control"  %>
+          <div class="mb-2">  
+            <%= f.label :email, class: "col-form-label" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          </div>
+          <div class="mb-2">
+            <%= f.label :name, class: "col-form-label" %>
+            <%= f.text_field :name, class: "form-control"  %>
 
-            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+          </div>
+          <div class="mb-2">
+            <%= f.label :password %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control"  %>
+            <% if @minimum_password_length %>
+              <em><%= @minimum_password_length %> characters minimum</em>
             <% end %>
-          
-          <%= f.label :password %>
-          <%= f.password_field :password, autocomplete: "new-password", class: "form-control"  %>
-          <% if @minimum_password_length %>
-            <em><%= @minimum_password_length %> characters minimum</em>
-          <% end %>
-          
-          <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"  %>
-          
-          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-          <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control"  %>
-
-          <div class="actions">
-            <%= f.submit "Update", class: "btn btn-primary" %>
+          </div>
+          <div class="mb-2">
+            <%= f.label :password_confirmation %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control"  %>
+          </div>
+          <div class="mb-2">
+            <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+            <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control"  %>
           </div>
 
+          <div class="d-flex btn-group mb-3">
+            <div class="actions btn btn-primary w-100">
+              <%= f.submit "Update", class: "btn btn-primary w-100" %>
+            </div>
           <% end #end form %>
-
-          <%= link_to "Nevermind", :back, class: "btn btn-secondary" %>
-
+          <%= link_to "Nevermind", :back, class: "btn btn-outline-secondary w-100" %>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-xs-6 col-lg-4 mb-3" >
       <div class="card">
         <div class="card-body">
 
@@ -58,3 +63,4 @@
       </div>
     </div>
   </div>
+</div>

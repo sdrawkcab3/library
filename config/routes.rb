@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :books
+  resources :loans
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
