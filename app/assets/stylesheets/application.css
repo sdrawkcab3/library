@@ -14,6 +14,21 @@
  *= require_self
  */
 
+ @import "font-awesome";
+
+ /* ND official colors 
+{
+--brand-blue:#0c2340;
+--brand-blue-dark:#081629;
+--brand-blue-light:#143865;
+--brand-blue-bright:#1c4f8f;
+--brand-gold:#ae9142;
+--brand-gold-dark:#8c7535;
+--brand-gold-light:#d39f10;
+--link-blue:#0c2340;
+}
+*/
+
  /* navbar toggle animation */
 .navbar-toggler{
     width: 20px;
@@ -88,18 +103,7 @@
     background: rgb(20,56,101);
     background: linear-gradient(90deg, rgba(211,159,16,1) 0%, rgba(174,145,66,1) 50%, rgba(20,56,101,1) 100%);
 }
-/* ND official colors 
-{
---brand-blue:#0c2340;
---brand-blue-dark:#081629;
---brand-blue-light:#143865;
---brand-blue-bright:#1c4f8f;
---brand-gold:#ae9142;
---brand-gold-dark:#8c7535;
---brand-gold-light:#d39f10;
---link-blue:#0c2340;
-}
-*/
+
 @media (min-width: 768px) {
     .animate {
       animation-duration: 0.3s;
@@ -149,3 +153,17 @@
   }
   
   /* Other styles for the page not related to the animated dropdown */
+
+  .brandbox {
+    max-width: 500px;
+    background-color: #1c4f8f;
+ }
+ @media only screen and (max-width: 700px) {
+    body {
+       margin: 0;
+       padding: 0;
+    }
+    .sample {
+       width: 100%;
+    }
+ }
