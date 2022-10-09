@@ -12,9 +12,10 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 
- @import "font-awesome";
+@import "font-awesome";
 
  /* ND official colors 
 {
@@ -168,10 +169,8 @@
     }
  }
 
- /* Book Card Stylesheets */
- body{margin-top:20px;
-  background:#eee;
-  }
+ /* Book Card Style */
+
   .book_card_profile {
       position: relative;
       margin-bottom: 50px;
