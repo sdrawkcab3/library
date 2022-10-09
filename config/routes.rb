@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'scan/new'
   resources :books
   resources :loans
   devise_for :users, controllers: {

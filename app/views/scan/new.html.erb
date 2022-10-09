@@ -1,0 +1,34 @@
+<h1>Verify book info:</h1>
+<br/>
+
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+
+  <div class="col-md-8">
+    <div class="card-body">
+      <%= render partial: "books/form", book: @book %>
+    </div>
+  </div>
+
+
+        <div class="col-md-4">
+          <%= image_tag (@book.cover_link), class: 'img-fluid rounded-end' %>
+
+        </div>
+      </div>
+    </div>
+
+        <br/>
+          <div>
+            <%#= form.submit class: 'btn btn-outline-secondary', :name => 'submit_info' %>
+          </div>
+
+ <br/>
+    <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Scan another book</h5>
+          <%= render partial: "books/scan", book: @book %>
+      </div>
+    </div>
+  </div>

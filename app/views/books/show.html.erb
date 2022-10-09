@@ -1,8 +1,49 @@
-<%= render @book %>
-
-<div>
-  <%= link_to "Edit this book", edit_book_path(@book) %> |
-  <%= link_to "Back to books", books_path %>
-
-  <%= button_to "Destroy this book", @book, method: :delete %>
-</div>
+<div class="container"style="width:48rem;">
+  <div class="card mt-3 mb-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <%= image_tag (@book.cover_link), class: 'img-fluid rounded-start' %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <div class="card-header">
+            <h3> <%= @book.title %> </h3>
+            <h5> <%= @book.author %> </h5>
+          </div>
+          <div class="card-text">
+            <p class="card-text text-muted"> <%= @book.short_description %> </p>
+            <p class="card-text text-muted"> <%= @book.collection %>  |  <%= @book.shelf %> </p>
+            <p class="card-text text-muted"> ISBN: <%= @book.ISBN %> </p>
+            <%= link_to "Back to books", books_path, class: "btn btn-dark" %>
+            <% if !current_user.nil? %>
+              <% if current_user.admin == true %>
+                <%= link_to "Edit this book", edit_book_path(@book), class: "btn btn-secondary" %>
+              <% end %>
+              <% if current_user.admin == false %>
+                <%= link_to "Review this book", new_review_path(@book), class: "btn btn-secondary" %>
+              <% end %>
+              <% if current_user.admin == false %>
+                <%= link_to "Borrow this book", new_loan_path(@book), class: "btn btn-primary" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% if !current_user.nil? %>
+  <% if current_user.admin == true %>
+      <div class="text-center">
+        <p><em>Warning:</em> Deletion cannot be undone</p>
+        <p>
+          <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            Ok, I want to delete this book
+          </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <%= button_to "Destroy this book", @book, method: :delete, class: 'btn btn-outline-danger btn-sm' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -13,8 +13,8 @@
       <li><a class="dropdown-item" href="#">Reviews</a></li>
       <li><hr class="dropdown-divider"></li>
       <% if current_user.admin == true %>
-        <li><a class="dropdown-item" href="#">Add book</a></li>
-        <li><a class="dropdown-item" href="#">View currently borrowed</a></li>
+        <li><%= link_to 'Add Book', new_book_path, class:"dropdown-item" %></li>
+        <li><a class="dropdown-item" href="#">View current loans</a></li>
         <li><a class="dropdown-item" href="#">Notify overdue borrowers</a></li>
         <li><hr class="dropdown-divider"></li>
       <% end %>

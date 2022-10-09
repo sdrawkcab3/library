@@ -1,0 +1,5 @@
+  <%= form_with model: @book do |form| %>
+    <%= form.label :isbn, "Enter ISBN 10 or 13: " %>
+    <%= number_field_tag 'isbn'  %>
+    <%= form.submit "Search", commit: 'isbn', class: 'btn btn-primary btn-sm' %>
+  <% end %>
