@@ -171,6 +171,10 @@
 
  /* Book Card Style */
 
+ .checked {
+    color: orange;
+  }
+
   .book_card_profile {
       position: relative;
       margin-bottom: 50px;

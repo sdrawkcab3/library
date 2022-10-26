@@ -1,6 +1,10 @@
 class LoansController < ApplicationController
   before_action :set_loan, only: %i[ show edit update destroy ]
 
+  # get user
+  # verify that book is available
+
+
   # GET /loans or /loans.json
   def index
     @loans = Loan.all
@@ -66,5 +70,9 @@ class LoansController < ApplicationController
     # Only allow a list of trusted parameters through.
     def loan_params
       params.fetch(:loan, {})
+    end
+
+    def set_book
+      @book = Book.find(params[:id])
     end
 end

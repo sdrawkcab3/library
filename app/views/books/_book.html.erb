@@ -1,3 +1,4 @@
+<!--
 <div id="<%= dom_id book %>">
 <tr>
   <td><%= link_to book.title, book %></td>
@@ -11,7 +12,7 @@
   <td><%= book.shelf %></td>
 </tr>
 </div>
-
+-->
 <div class="container">
         <div class="row justify-content-center">
           <div class="col-12 col-sm-8 col-lg-6">
@@ -29,27 +30,40 @@
           <div class="col-12 col-sm-6 col-lg-3">
             <div class="book_card_profile wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
               <!-- Book Thumb -->
-              <div class="book_thumb"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+              <div class="book_thumb"><%= image_tag (@book.cover_link), class: "img rounded-top", style: "width:200px;" %>
                 <!-- Review Section -->
-                <div class="social-info"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-linkedin"></i></a></div>
+                <div class="social-info"><% @reviews.average(:stars).floor.times do |star| %><i class="fa fa-star checked" stlye="color:orange;"></i><% end %></div>
               </div>
               <!-- Team Details-->
               <div class="book_card_details_info">
-                <h6>Samantha Sarah</h6>
-                <p class="designation">Founder &amp; CEO</p>
+                <h6><%= link_to book.title, book %></h6>
+                <p class="designation"><%= book.author %></p>
               </div>
-              <!-- More Information Accordian -->
-              <div class="container">
-                <p>
-                  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    Link with href
-                  </a>
-                </p>
-                <div class="collapse" id="collapseExample">
-                  <div class="card card-body">
-                    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+              <!-- Button trigger modal
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                Launch demo modal
+              </button> -->
+
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      ...
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
                   </div>
                 </div>
+              </div>
 
               </div>
             </div>
