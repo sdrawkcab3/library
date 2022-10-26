@@ -1,26 +1,33 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [ :index, :show ]
+  before_action :correct_user, only: [ :edit, :update, :destroy ]
 
   require 'json'
   require 'net/http'
   require 'uri'
   
   # GET /books or /books.json
+  
   def index
     @books = Book.all
+    book_ids = Book.pluck(:id)
+    @book = Book.find(book_ids.sample)
+    @reviews = Review.where(book_id: @book.id)
+    @stars = @book.reviews.average(:stars)
+
+
   end
 
   # GET /books/1 or /books/1.json
   def show
+    @pagy, @reviews = pagy(Review.where(book_id: @book.id))
+    # @average_rating = @reviews.stars.sum(0.0) / @reviews.count
   end
 
   # GET /books/new
   def new
    @book = Book.new
-    #@book = current_user.books.build
-
   end
 
   # GET /books/1/edit
@@ -109,7 +116,8 @@ class BooksController < ApplicationController
     else
       authors = join_field(info['authors'])
       publishers = join_field(info['publishers'])
-      @book = Book.build(
+      @book = Book.new
+      @book = Book.update(
         title: info['title'],
         authors: authors,
         publisher: publishers,
